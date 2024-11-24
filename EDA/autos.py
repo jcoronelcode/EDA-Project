@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Se carga los datos
 df = pd.read_csv('../autos.csv')
@@ -148,4 +149,17 @@ plt.title('Relación entre Kilometraje y Precio')
 plt.xlabel('Kilometraje')
 plt.ylabel('Precio')
 plt.grid(True, linestyle='--', alpha=0.7)
+plt.show()
+
+
+# Seleccionar solo columnas numéricas
+numerical_columns = df.select_dtypes(include=['int64', 'float64'])
+
+# Calcular la matriz de correlación
+correlation_matrix = numerical_columns.corr()
+
+# Generar el mapa de calor
+plt.figure(figsize=(10, 8))
+sns.heatmap(correlation_matrix, annot=True, fmt=".2f", cmap="coolwarm", cbar=True)
+plt.title('Mapa de Calor de Correlación entre Variables Numéricas')
 plt.show()

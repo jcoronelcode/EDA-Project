@@ -1,0 +1,62 @@
+### **Conclusiones del Análisis Exploratorio de Datos (EDA)**
+
+
+
+### **Hallazgos clave**
+
+#### **1. Características con mayor impacto en el precio**
+- **Año de Registro (`yearOfRegistration`)**:
+  - Existe una **correlación positiva moderada (0.26)** entre el año de registro y el precio del vehículo.
+  - **Patrón observado**: Los autos más nuevos tienden a tener precios más altos, lo que es coherente con su menor 
+  antigüedad y mayor valor de mercado.
+- **Potencia (`powerPS`)**:
+  - Se observa una **correlación positiva (0.20)** entre la potencia y el precio.
+  - **Patrón observado**: Vehículos más potentes, como autos deportivos o de lujo, suelen ser más costosos.
+
+#### **2. Efecto del kilometraje en el precio**
+- **Kilometraje (`kilometer`)**:
+  - Existe una **correlación negativa (-0.26)** entre el kilometraje y el precio.
+  - **Patrón observado**: A medida que aumenta el kilometraje, el precio disminuye debido al desgaste acumulado del vehículo.
+  - Sin embargo, la distribución del kilometraje sugiere agrupamientos en rangos redondeados (por ejemplo, 90,000 y 150,000 km), 
+  lo cual podría limitar un análisis más granular.
+
+#### **3. Patrones entre marcas y combustible**
+- **Marcas con precios más altos**:
+  - Marcas como **Porsche**, **Mercedes-Benz** y **BMW** tienen precios promedio más altos, reflejando su estatus como fabricantes 
+  de vehículos premium.
+  - En contraste, marcas como **Fiat** y **Dacia** tienen precios promedio más bajos, reflejando su enfoque en vehículos económicos.
+- **Tipo de combustible (`fuelType`)**:
+  - Los vehículos que utilizan **combustibles alternativos (híbridos o eléctricos)** tienen precios promedio más altos que los de 
+  gasolina o diésel. Esto podría reflejar su innovación tecnológica y menor disponibilidad en el mercado.
+
+#### **4. Relación entre transmisión y precio**
+- **Transmisión automática vs manual**:
+  - Los vehículos con **transmisión automática** tienen precios promedio más altos en comparación con los de transmisión manual.
+  - Esto puede deberse a que los autos con transmisión automática tienden a estar asociados a modelos más lujosos o modernos.
+
+#### **5. Limpieza y calidad del dataset**
+- Se identificaron y eliminaron **valores atípicos** en `price`, `yearOfRegistration` y `kilometer`:
+  - Se descartaron precios extremadamente bajos (<100) y altos (>100,000).
+  - Años de registro fuera de rango (antes de 1900 o después de 2024) fueron eliminados.
+  - Se mantuvieron datos limpios con valores razonables para su análisis.
+- Se imputaron valores nulos en columnas categóricas como `vehicleType` y `fuelType` con categorías genéricas como `"unknown"`, 
+preservando la estructura del dataset.
+
+---
+
+### **Insights clave**
+1. **El precio del vehículo está más influenciado por el año de registro, la potencia y el kilometraje.**
+2. **Marcas premium y combustibles alternativos tienen precios más altos.**
+3. **Los autos con transmisión automática tienden a ser más costosos, probablemente debido a su asociación con modelos de lujo.**
+
+---
+
+### **Recomendaciones**
+- **Modelado predictivo**:
+  - Las variables más relevantes para predecir el precio del vehículo son `yearOfRegistration`, `kilometer`, `powerPS`, `brand` y 
+  `fuelType`. Estas deberían ser el foco en modelos de machine learning.
+- **Exploración adicional**:
+  - Investigar si existe una relación no lineal más compleja entre el kilometraje y el precio.
+  - Analizar cómo las combinaciones de características (por ejemplo, `brand` y `fuelType`) afectan conjuntamente al precio.
+- **Calidad de datos**:
+  - Considerar fuentes adicionales para validar datos sospechosos, como el kilometraje agrupado.
